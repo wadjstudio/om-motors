@@ -12,3 +12,5 @@ Files: index.html, style.css, app.js, model-loader.js, assets/, server.cjs.
 Three.js documentation: https://threejs.org/docs/ (MIT license).
 
 Reveal film: assets/om-reveal.mp4 is a cropped copy of the supplied OM Motors Reveal Ad.mp4. The bottom 70 pixels were removed (1280×650); the original audio and full duration are retained. The homepage uses native video controls and loads metadata only.
+
+Installable app: on Android Chrome, open https://om.wadj.online and use the browser menu → Add to home screen → Install. An Install OM Motors button appears in the footer when Chrome offers installation. The manifest sets standalone mode and provides 192/512px app icons, a maskable Android icon, and an Apple touch icon. The service worker saves the homepage, photography, and 3D model for offline revisits; the reveal film requires a connection. Bump the service-worker cache version when changing the offline assets.
