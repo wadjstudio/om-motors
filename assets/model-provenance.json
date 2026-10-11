@@ -1,0 +1,10 @@
+{
+  "generator": "Microsoft TRELLIS.2",
+  "space": "https://huggingface.co/spaces/microsoft/TRELLIS.2",
+  "reference": "Prepared user-provided OM vehicle image",
+  "resolution": 1024,
+  "decimationTarget": 100000,
+  "textureSize": 2048,
+  "seed": 379851083,
+  "bytes": 5736924
+}
