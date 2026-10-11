@@ -1,4 +1,4 @@
-const CACHE = 'om-motors-v1';
+const CACHE = 'om-motors-v2';
 const base = new URL('./', self.location.href);
 const files = ['index.html','style.css','app.js','pwa.js','model-loader.js','manifest.webmanifest','favicon.ico','assets/hero.jpeg','assets/details.jpeg','assets/reveal-poster.jpg','assets/three.module.js','assets/GLTFLoader.js','assets/BufferGeometryUtils.js','assets/om-generated.glb','assets/icons/favicon.svg','assets/icons/icon-180.png','assets/icons/icon-192.png','assets/icons/icon-512.png','assets/icons/icon-maskable-512.png'];
 const urls = files.map(file => new URL(file, base).href);
