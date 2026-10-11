@@ -1,5 +1,7 @@
 # OM Motors homepage
 
+Hosted with GitHub Pages at https://om.wadj.online/ from the main branch root. The CNAME file keeps the custom domain attached to future deployments. DNS uses an om CNAME pointing to wadjstudio.github.io.
+
 Premium responsive homepage using the supplied vehicle references. Includes a genuine WebGL concept SUV, drag and keyboard orbit, automatic rotation, five paint finishes, zoom, reset and fullscreen. Motion respects the device's reduced-motion preference.
 
 Run `node server.cjs` from this folder, then open http://127.0.0.1:4173. No build step or package installation is needed. Three.js is bundled locally; optional Google Fonts use the network, with system font fallbacks.
