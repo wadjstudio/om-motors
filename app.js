@@ -130,6 +130,7 @@ host.addEventListener('pointerup',()=>dragging=false);host.addEventListener('poi
 host.addEventListener('wheel',e=>{if(!host.matches(':focus')&&!dragging)return;e.preventDefault();distance=T.MathUtils.clamp(distance+e.deltaY*.008,6.3,12);},{passive:false});
 host.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-'].includes(e.key)){e.preventDefault();auto=false;updateRotation();if(e.key==='ArrowLeft')angle-=.15;if(e.key==='ArrowRight')angle+=.15;if(e.key==='ArrowUp')elevation=Math.min(.85,elevation+.08);if(e.key==='ArrowDown')elevation=Math.max(.12,elevation-.08);if(e.key==='+')distance=Math.max(6.3,distance-.5);if(e.key==='-')distance=Math.min(12,distance+.5);}});
 document.querySelectorAll('.swatch').forEach((b,i)=>b.onclick=()=>{paint.color.set(b.dataset.color);generatedVehicle?.setPaint(b.dataset.color);dirty=true;document.querySelector('#paint-name').innerHTML=`${b.dataset.name} <small>0${i+1} / 05</small>`;document.querySelectorAll('.swatch').forEach(s=>{s.classList.toggle('active',s===b);s.setAttribute('aria-pressed',String(s===b));});});
+
 const resize=()=>{const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();dirty=true;};new ResizeObserver(resize).observe(host);resize();
 let visible=true;new IntersectionObserver(([entry])=>visible=entry.isIntersecting).observe(host);
 renderer.setAnimationLoop(time=>{const delta=Math.min((time-last)/1000,.05);last=time;if((!visible&&!dirty)||document.hidden)return;if(auto&&!dragging&&visible)angle+=delta*.11;const currentCamera=`${angle},${elevation},${distance}`;if(!dirty&&currentCamera===previousCamera)return;if(time-lastFrame<33)return;lastFrame=time;previousCamera=currentCamera;const d=distance*(camera.aspect<1.3?1.3:1);camera.position.set(-Math.cos(angle)*d,1.1+Math.sin(elevation)*d,Math.sin(angle)*d);camera.lookAt(0,1.08,0);renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;dirty=false;frames++;});
@@ -141,3 +142,228 @@ loadGeneratedVehicle(scene,car,renderer,()=>dirty=true).then(vehicle=>{
 }).catch(error=>{modelStatus='fallback';console.warn('Generated vehicle could not load; showing concept.',error.message);});
 }
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+// Dual Model Switcher (OM1 SUV & OM2 Sedan)
+function setActiveModel(modelId) {
+  document.querySelectorAll('.model-tab-btn, .editions-model-btn').forEach(btn => {
+    const isActive = btn.dataset.model === modelId;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', String(isActive));
+  });
+
+  const panelOm1 = document.querySelector('#panel-om1');
+  const panelOm2 = document.querySelector('#panel-om2');
+  if (panelOm1 && panelOm2) {
+    panelOm1.classList.toggle('active', modelId === 'om1');
+    panelOm2.classList.toggle('active', modelId === 'om2');
+  }
+
+  const editionsOm1 = document.querySelector('#editions-panel-om1');
+  const editionsOm2 = document.querySelector('#editions-panel-om2');
+  if (editionsOm1 && editionsOm2) {
+    editionsOm1.classList.toggle('active', modelId === 'om1');
+    editionsOm2.classList.toggle('active', modelId === 'om2');
+  }
+
+  const interiorOm1 = document.querySelector('#interior-block-om1');
+  const interiorOm2 = document.querySelector('#interior-block-om2');
+  if (interiorOm1 && interiorOm2) {
+    interiorOm1.classList.toggle('active', modelId === 'om1');
+    interiorOm2.classList.toggle('active', modelId === 'om2');
+  }
+
+  if (modelId === 'om1' && typeof resize === 'function') {
+    requestAnimationFrame(() => resize());
+  }
+}
+
+document.querySelectorAll('.model-tab-btn, .editions-model-btn').forEach(btn => {
+  btn.onclick = () => {
+    const model = btn.dataset.model;
+    if (model) setActiveModel(model);
+  };
+});
+
+// OM1 Bespoke Interior Leather Configurator
+const interiorImgOm1 = document.querySelector('#interior-image-om1') || document.querySelector('#interior-image');
+const leatherNameOm1 = document.querySelector('#leather-name-om1') || document.querySelector('#leather-name');
+const leatherSwatchesOm1 = document.querySelectorAll('#interior-block-om1 .leather-swatch, .leather-swatch');
+const experienceSec = document.querySelector('#experience');
+
+if (interiorImgOm1 && leatherSwatchesOm1.length) {
+  leatherSwatchesOm1.forEach(b => {
+    if (b.dataset.img) {
+      const pre = new Image();
+      pre.src = b.dataset.img;
+    }
+  });
+
+  leatherSwatchesOm1.forEach((btn, i) => {
+    btn.onclick = () => {
+      if (btn.classList.contains('active') && interiorImgOm1.src.includes(btn.dataset.img)) return;
+      interiorImgOm1.style.opacity = '0.35';
+      const tempImg = new Image();
+      tempImg.src = btn.dataset.img;
+      tempImg.onload = () => {
+        interiorImgOm1.src = btn.dataset.img;
+        interiorImgOm1.style.opacity = '1';
+      };
+      if (tempImg.complete) {
+        interiorImgOm1.src = btn.dataset.img;
+        interiorImgOm1.style.opacity = '1';
+      }
+      if (leatherNameOm1) {
+        leatherNameOm1.innerHTML = `${btn.dataset.name} <small>0${i + 1} / 0${leatherSwatchesOm1.length}</small>`;
+      }
+      leatherSwatchesOm1.forEach(s => {
+        const active = s === btn;
+        s.classList.toggle('active', active);
+        s.setAttribute('aria-pressed', String(active));
+      });
+    };
+  });
+}
+
+// OM2 Sedan Exterior Paint & Angle Configurator
+const sedanImg = document.querySelector('#sedan-paint-img');
+const sedanPaintName = document.querySelector('#sedan-paint-name');
+const sedanSwatches = document.querySelectorAll('.sedan-swatch');
+const sedanAngleBtns = document.querySelectorAll('.sedan-angle-btn');
+let currentSedanPaint = 'assets/sedan-paint-grey.jpg';
+
+if (sedanSwatches.length && sedanImg) {
+  sedanSwatches.forEach(b => {
+    if (b.dataset.img) {
+      const pre = new Image();
+      pre.src = b.dataset.img;
+    }
+  });
+
+  sedanSwatches.forEach((btn, i) => {
+    btn.onclick = () => {
+      currentSedanPaint = btn.dataset.img;
+      sedanImg.style.opacity = '0.35';
+      const tempImg = new Image();
+      tempImg.src = btn.dataset.img;
+      tempImg.onload = () => {
+        sedanImg.src = btn.dataset.img;
+        sedanImg.style.opacity = '1';
+      };
+      if (tempImg.complete) {
+        sedanImg.src = btn.dataset.img;
+        sedanImg.style.opacity = '1';
+      }
+      if (sedanPaintName) {
+        sedanPaintName.innerHTML = `${btn.dataset.name} <small>0${i + 1} / 0${sedanSwatches.length}</small>`;
+      }
+      sedanSwatches.forEach(s => {
+        const active = s === btn;
+        s.classList.toggle('active', active);
+        s.setAttribute('aria-pressed', String(active));
+      });
+      sedanAngleBtns.forEach(ab => {
+        ab.classList.toggle('active', ab.dataset.isPaint === 'true');
+      });
+    };
+  });
+}
+
+// OM2 Sedan Camera Angles
+if (sedanAngleBtns.length && sedanImg) {
+  sedanAngleBtns.forEach(btn => {
+    if (btn.dataset.img && btn.dataset.isPaint !== 'true') {
+      const pre = new Image();
+      pre.src = btn.dataset.img;
+    }
+    btn.onclick = () => {
+      const targetSrc = btn.dataset.isPaint === 'true' ? currentSedanPaint : btn.dataset.img;
+      sedanImg.style.opacity = '0.35';
+      const tempImg = new Image();
+      tempImg.src = targetSrc;
+      tempImg.onload = () => {
+        sedanImg.src = targetSrc;
+        sedanImg.style.opacity = '1';
+      };
+      if (tempImg.complete) {
+        sedanImg.src = targetSrc;
+        sedanImg.style.opacity = '1';
+      }
+      sedanAngleBtns.forEach(ab => ab.classList.toggle('active', ab === btn));
+    };
+  });
+}
+
+// OM2 Sedan Bespoke Interior Leather Configurator
+const interiorImgOm2 = document.querySelector('#interior-image-om2');
+const leatherNameOm2 = document.querySelector('#leather-name-om2');
+const sedanLeatherSwatches = document.querySelectorAll('.sedan-leather-swatch');
+
+if (interiorImgOm2 && sedanLeatherSwatches.length) {
+  sedanLeatherSwatches.forEach(b => {
+    if (b.dataset.img) {
+      const pre = new Image();
+      pre.src = b.dataset.img;
+    }
+  });
+
+  sedanLeatherSwatches.forEach((btn, i) => {
+    btn.onclick = () => {
+      if (btn.classList.contains('active') && interiorImgOm2.src.includes(btn.dataset.img)) return;
+      interiorImgOm2.style.opacity = '0.35';
+      const tempImg = new Image();
+      tempImg.src = btn.dataset.img;
+      tempImg.onload = () => {
+        interiorImgOm2.src = btn.dataset.img;
+        interiorImgOm2.style.opacity = '1';
+      };
+      if (tempImg.complete) {
+        interiorImgOm2.src = btn.dataset.img;
+        interiorImgOm2.style.opacity = '1';
+      }
+      if (leatherNameOm2) {
+        leatherNameOm2.innerHTML = `${btn.dataset.name} <small>0${i + 1} / 0${sedanLeatherSwatches.length}</small>`;
+      }
+      sedanLeatherSwatches.forEach(s => {
+        const active = s === btn;
+        s.classList.toggle('active', active);
+        s.setAttribute('aria-pressed', String(active));
+      });
+    };
+  });
+}
+
+// Cabin View Toggle (Clear View / Details View)
+document.querySelectorAll('.cabin-view-btn').forEach(btn => {
+  btn.onclick = () => {
+    if (experienceSec) {
+      const isClear = experienceSec.classList.toggle('clear-view');
+      document.querySelectorAll('.cabin-view-btn').forEach(b => {
+        b.innerHTML = isClear ? 'Show details <span>✕</span>' : 'Clear cabin view <span>👁</span>';
+      });
+    }
+  };
+});
+
+// Trims Configuration Interaction (OM1 & OM2)
+document.querySelectorAll('.edition-card').forEach(card => {
+  const code = card.querySelector('.edition-code')?.textContent || 'GT';
+  const isOm2 = card.dataset.trim?.startsWith('om2');
+  const btn = card.querySelector('.edition-btn');
+  if (btn) {
+    btn.onclick = () => {
+      if (isOm2) {
+        setActiveModel('om2');
+        const sedanViewerLabel = document.querySelector('#panel-om2 .viewer-label span');
+        if (sedanViewerLabel) sedanViewerLabel.textContent = `ANTIGRAVITY OM2 · ${code}`;
+      } else {
+        setActiveModel('om1');
+        const om1ViewerLabel = document.querySelector('#panel-om1 .viewer-label span');
+        if (om1ViewerLabel) om1ViewerLabel.textContent = `ANTIGRAVITY OM1 · ${code}`;
+      }
+      document.querySelectorAll('.edition-card').forEach(c => c.classList.toggle('active-selected', c === card));
+    };
+  }
+});
+
+
+
