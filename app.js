@@ -361,9 +361,329 @@ document.querySelectorAll('.edition-card').forEach(card => {
         if (om1ViewerLabel) om1ViewerLabel.textContent = `ANTIGRAVITY OM1 · ${code}`;
       }
       document.querySelectorAll('.edition-card').forEach(c => c.classList.toggle('active-selected', c === card));
+      cartState.model = isOm2 ? 'om2' : 'om1';
+      cartState.trim = code;
+      updateDrawerUI();
     };
   }
 });
+
+// ========================================================
+// PURCHASE LIST / CART & RESERVATION SYSTEM
+// ========================================================
+const cartState = {
+  model: 'om1', // 'om1' | 'om2'
+  trim: 'GT',   // 'GT' | 'GTX' | 'GTX+'
+  paintName: 'Graphite Grey',
+  paintColor: '#45494a',
+  paintImg: 'assets/hero.jpeg',
+  leatherName: 'Desert Camel',
+  leatherColor: '#b87b4f',
+  addons: new Set(),
+  prices: {
+    om1: { 'GT': 950000, 'GTX': 1480000, 'GTX+': 2000000 },
+    om2: { 'GT': 1350000, 'GTX': 1850000, 'GTX+': 2600000 }
+  },
+  addonPrices: {
+    care: 45000,
+    wallbox: 35000,
+    ppf: 28000,
+    starlight: 22000
+  },
+  addonTitles: {
+    care: 'باقة الصيانة الشاملة OM Care+ (5 سنوات)',
+    wallbox: 'شاحن منزلي فائق السرعة Wallbox 22kW',
+    ppf: 'حماية نانو سيراميك كاملة Ultra-Shield PPF',
+    starlight: 'سقف بانورامي بألياف ضوئية Starlight Roof'
+  }
+};
+
+const formatEGP = num => Number(num).toLocaleString('en-US');
+
+// DOM Elements
+const purchaseDrawer = document.querySelector('#purchase-drawer');
+const drawerBackdrop = document.querySelector('#drawer-backdrop');
+const openCartBtn = document.querySelector('#open-cart-btn');
+const closeDrawerBtn = document.querySelector('#close-drawer-btn');
+const floatingCartBtn = document.querySelector('#floating-cart-btn');
+const cartBadge = document.querySelector('#cart-badge');
+const drawerCarImg = document.querySelector('#drawer-car-img');
+const drawerModelPill = document.querySelector('#drawer-model-pill');
+const drawerCarTitle = document.querySelector('#drawer-car-title');
+const drawerCarTier = document.querySelector('#drawer-car-tier');
+const drawerBasePrice = document.querySelector('#drawer-base-price');
+const drawerPaintSwatch = document.querySelector('#drawer-paint-swatch');
+const drawerPaintName = document.querySelector('#drawer-paint-name');
+const drawerLeatherSwatch = document.querySelector('#drawer-leather-swatch');
+const drawerLeatherName = document.querySelector('#drawer-leather-name');
+const summaryBasePrice = document.querySelector('#summary-base-price');
+const summaryAddonsPrice = document.querySelector('#summary-addons-price');
+const summaryTotalPrice = document.querySelector('#summary-total-price');
+const floatingCartSub = document.querySelector('#floating-cart-sub');
+const drawerTrimPills = document.querySelectorAll('.trim-pill');
+const addonCheckboxes = document.querySelectorAll('.addon-checkbox');
+const reservationForm = document.querySelector('#reservation-form');
+
+// Confirmation Modal Elements
+const orderModal = document.querySelector('#order-confirm-modal');
+const orderModalBackdrop = document.querySelector('#order-modal-backdrop');
+const modalRefCode = document.querySelector('#modal-ref-code');
+const modalClientName = document.querySelector('#modal-client-name');
+const modalSummaryCar = document.querySelector('#modal-summary-car');
+const modalSummaryPaint = document.querySelector('#modal-summary-paint');
+const modalSummaryLeather = document.querySelector('#modal-summary-leather');
+const modalSummaryAddons = document.querySelector('#modal-summary-addons');
+const modalSummaryTotal = document.querySelector('#modal-summary-total');
+const modalWhatsappBtn = document.querySelector('#modal-whatsapp-btn');
+const modalPrintBtn = document.querySelector('#modal-print-btn');
+const modalCloseBtn = document.querySelector('#modal-close-btn');
+
+function updateDrawerUI() {
+  const isOm1 = cartState.model === 'om1';
+  const modelName = isOm1 ? 'Antigravity OM1' : 'Antigravity OM2';
+  const modelType = isOm1 ? 'OM1 SUV' : 'OM2 SEDAN';
+  const tierLabels = {
+    'GT': isOm1 ? 'SUV Entry · الفئة الأولى' : 'Sedan GT · جراند تورر',
+    'GTX': isOm1 ? 'Sport Luxury · الفئة المتوسطة' : 'Performance AWD · أداء كلي متطور',
+    'GTX+': isOm1 ? 'Flagship Hybrid · الفئة الأعلى' : 'Apex Hyper · الإصدار الخارق 850 HP'
+  };
+
+  if (drawerModelPill) drawerModelPill.textContent = modelType;
+  if (drawerCarTitle) drawerCarTitle.innerHTML = `${modelName} <b>${cartState.trim}</b>`;
+  if (drawerCarTier) drawerCarTier.textContent = tierLabels[cartState.trim] || '';
+
+  // Thumbnail
+  if (drawerCarImg) {
+    if (isOm1) {
+      drawerCarImg.src = 'assets/hero.jpeg';
+    } else {
+      drawerCarImg.src = cartState.paintImg || 'assets/sedan-paint-grey.jpg';
+    }
+  }
+
+  // Paint & Leather
+  if (drawerPaintSwatch) drawerPaintSwatch.style.background = cartState.paintColor;
+  if (drawerPaintName) drawerPaintName.textContent = cartState.paintName;
+  if (drawerLeatherSwatch) drawerLeatherSwatch.style.background = cartState.leatherColor;
+  if (drawerLeatherName) drawerLeatherName.textContent = cartState.leatherName;
+
+  // Pricing calculations
+  const basePrice = (cartState.prices[cartState.model] && cartState.prices[cartState.model][cartState.trim]) || 950000;
+  let addonsTotal = 0;
+  cartState.addons.forEach(id => {
+    addonsTotal += (cartState.addonPrices[id] || 0);
+  });
+  const grandTotal = basePrice + addonsTotal;
+
+  if (drawerBasePrice) drawerBasePrice.textContent = formatEGP(basePrice);
+  if (summaryBasePrice) summaryBasePrice.textContent = `${formatEGP(basePrice)} EGP`;
+  if (summaryAddonsPrice) summaryAddonsPrice.textContent = `${formatEGP(addonsTotal)} EGP`;
+  if (summaryTotalPrice) summaryTotalPrice.innerHTML = `${formatEGP(grandTotal)} <small>EGP</small>`;
+
+  // Update floating quick pill
+  if (floatingCartSub) {
+    const shortCode = `${isOm1 ? 'OM1' : 'OM2'} ${cartState.trim}`;
+    floatingCartSub.textContent = `${shortCode} · ${formatEGP(grandTotal)} EGP`;
+  }
+
+  // Trim buttons active state
+  drawerTrimPills.forEach(pill => {
+    pill.classList.toggle('active', pill.dataset.trimCode === cartState.trim);
+  });
+
+  // Badge count: 1 car + number of selected addons
+  const count = 1 + cartState.addons.size;
+  if (cartBadge) cartBadge.textContent = count;
+  const floatingBadge = document.querySelector('.floating-cart-badge');
+  if (floatingBadge) floatingBadge.textContent = count;
+}
+
+function openDrawer() {
+  if (purchaseDrawer) purchaseDrawer.classList.add('open');
+  if (drawerBackdrop) drawerBackdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  if (purchaseDrawer) purchaseDrawer.classList.remove('open');
+  if (drawerBackdrop) drawerBackdrop.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Drawer listeners
+if (openCartBtn) openCartBtn.onclick = openDrawer;
+if (floatingCartBtn) floatingCartBtn.onclick = openDrawer;
+if (closeDrawerBtn) closeDrawerBtn.onclick = closeDrawer;
+if (drawerBackdrop) drawerBackdrop.onclick = closeDrawer;
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeDrawer();
+    closeOrderModal();
+  }
+});
+
+// Trim selector inside drawer
+drawerTrimPills.forEach(pill => {
+  pill.onclick = () => {
+    cartState.trim = pill.dataset.trimCode;
+    updateDrawerUI();
+  };
+});
+
+// Addons checkboxes
+addonCheckboxes.forEach(box => {
+  box.onchange = () => {
+    const id = box.dataset.addonId;
+    if (box.checked) cartState.addons.add(id);
+    else cartState.addons.delete(id);
+    updateDrawerUI();
+  };
+});
+
+// Sync paint changes from showroom
+document.querySelectorAll('.swatch').forEach(b => {
+  b.addEventListener('click', () => {
+    cartState.model = 'om1';
+    cartState.paintName = b.dataset.name || 'Graphite Grey';
+    cartState.paintColor = b.dataset.color || '#45494a';
+    updateDrawerUI();
+  });
+});
+
+document.querySelectorAll('.sedan-swatch').forEach(b => {
+  b.addEventListener('click', () => {
+    cartState.model = 'om2';
+    cartState.paintName = b.dataset.name || 'Matte Grey';
+    cartState.paintColor = b.style.getPropertyValue('--swatch') || '#484c4f';
+    cartState.paintImg = b.dataset.img || 'assets/sedan-paint-grey.jpg';
+    updateDrawerUI();
+  });
+});
+
+// Sync leather changes from interior
+document.querySelectorAll('#interior-block-om1 .leather-swatch, .leather-swatch').forEach(b => {
+  b.addEventListener('click', () => {
+    cartState.leatherName = b.dataset.name || 'Desert Camel';
+    cartState.leatherColor = b.style.getPropertyValue('--swatch') || '#b87b4f';
+    updateDrawerUI();
+  });
+});
+
+document.querySelectorAll('.sedan-leather-swatch').forEach(b => {
+  b.addEventListener('click', () => {
+    cartState.leatherName = b.dataset.name || 'Saddle Cognac';
+    cartState.leatherColor = b.style.getPropertyValue('--swatch') || '#855234';
+    updateDrawerUI();
+  });
+});
+
+// Add to cart buttons in showcase config
+document.querySelectorAll('.config-cart-btn').forEach(btn => {
+  btn.onclick = () => {
+    cartState.model = btn.dataset.model || 'om1';
+    setActiveModel(cartState.model);
+    updateDrawerUI();
+    openDrawer();
+  };
+});
+
+// Reserve buttons on edition cards
+document.querySelectorAll('.edition-reserve-btn').forEach(btn => {
+  btn.onclick = () => {
+    cartState.model = btn.dataset.model || 'om1';
+    cartState.trim = btn.dataset.code || 'GT';
+    setActiveModel(cartState.model);
+    updateDrawerUI();
+    openDrawer();
+  };
+});
+
+// Confirmation Modal Functions
+function openOrderModal(data) {
+  if (modalRefCode) modalRefCode.textContent = data.refCode;
+  if (modalClientName) modalClientName.textContent = data.name;
+  if (modalSummaryCar) modalSummaryCar.textContent = `${data.modelName} ${data.trim}`;
+  if (modalSummaryPaint) modalSummaryPaint.textContent = data.paint;
+  if (modalSummaryLeather) modalSummaryLeather.textContent = data.leather;
+  if (modalSummaryAddons) modalSummaryAddons.textContent = data.addonsList.length ? data.addonsList.join(' + ') : 'لا توجد باقات إضافية';
+  if (modalSummaryTotal) modalSummaryTotal.textContent = `${formatEGP(data.total)} EGP`;
+
+  // Build WhatsApp Message
+  const waText = encodeURIComponent(
+`السلام عليكم، أود تأكيد حجز سيارة من OM Motors:
+• رقم الحجز المرجعي: ${data.refCode}
+• العميل: ${data.name}
+• الهاتف: ${data.phone}
+• السيارة: ${data.modelName} (فئة ${data.trim})
+• الطلاء الخارجي: ${data.paint}
+• المقصورة الداخلية: ${data.leather}
+• الإضافات: ${data.addonsList.length ? data.addonsList.join(', ') : 'لا توجد'}
+• السعر الإجمالي: ${formatEGP(data.total)} ج.م
+• صالة الاستلام: ${data.showroom}
+• نظام السداد: ${data.payment}
+برجاء تأكيد استلام الحجز والتواصل معي. شكراً!`
+  );
+  if (modalWhatsappBtn) {
+    modalWhatsappBtn.href = `https://wa.me/201000000000?text=${waText}`;
+  }
+
+  if (orderModal) orderModal.classList.add('open');
+  if (orderModalBackdrop) orderModalBackdrop.classList.add('active');
+}
+
+function closeOrderModal() {
+  if (orderModal) orderModal.classList.remove('open');
+  if (orderModalBackdrop) orderModalBackdrop.classList.remove('active');
+}
+
+if (modalCloseBtn) modalCloseBtn.onclick = closeOrderModal;
+if (orderModalBackdrop) orderModalBackdrop.onclick = closeOrderModal;
+if (modalPrintBtn) modalPrintBtn.onclick = () => window.print();
+
+// Reservation Form Submission
+if (reservationForm) {
+  reservationForm.onsubmit = e => {
+    e.preventDefault();
+    const formData = new FormData(reservationForm);
+    const clientName = formData.get('name') || 'العميل';
+    const clientPhone = formData.get('phone') || '';
+    const showroom = formData.get('showroom') || 'الشيخ زايد';
+    const payment = formData.get('payment') || 'دفع نقدي كاش';
+
+    // Random order reference code
+    const randomCode = `OM-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+    const basePrice = (cartState.prices[cartState.model] && cartState.prices[cartState.model][cartState.trim]) || 950000;
+    let addonsTotal = 0;
+    const addonsList = [];
+    cartState.addons.forEach(id => {
+      addonsTotal += (cartState.addonPrices[id] || 0);
+      addonsList.push(cartState.addonTitles[id]);
+    });
+
+    const isOm1 = cartState.model === 'om1';
+    const orderData = {
+      refCode: randomCode,
+      name: clientName,
+      phone: clientPhone,
+      showroom: showroom,
+      payment: payment,
+      modelName: isOm1 ? 'Antigravity OM1 SUV' : 'Antigravity OM2 Sedan',
+      trim: cartState.trim,
+      paint: cartState.paintName,
+      leather: cartState.leatherName,
+      addonsList: addonsList,
+      total: basePrice + addonsTotal
+    };
+
+    closeDrawer();
+    openOrderModal(orderData);
+  };
+}
+
+// Initial Call
+updateDrawerUI();
+
 
 
 

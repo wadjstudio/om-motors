@@ -1,13 +1,248 @@
 <!doctype html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121411"><link rel="icon" href="favicon.ico" sizes="32x32"><link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="application-name" content="Antigravity OM1"><meta name="apple-mobile-web-app-title" content="Antigravity OM1"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>OM Motors — Antigravity OM1</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<header><a class="brand" href="#home" aria-label="OM Motors home"><span class="emblem">O</span><span>OM <b>MOTORS</b></span></a><nav aria-label="Main navigation"><a href="#showcase">The vehicle</a><a href="#editions">Editions & Pricing</a><a href="#design">Design philosophy</a><a href="#experience">The experience</a></nav><a class="nav-cta" href="#editions">Explore Antigravity OM1 <span>↗</span></a></header>
+<header><a class="brand" href="#home" aria-label="OM Motors home"><span class="emblem">O</span><span>OM <b>MOTORS</b></span></a><nav aria-label="Main navigation"><a href="#showcase">The vehicle</a><a href="#editions">Editions & Pricing</a><a href="#design">Design philosophy</a><a href="#experience">The experience</a></nav><div class="header-actions"><button type="button" id="open-cart-btn" class="cart-trigger-btn" aria-label="قائمة الشراء والحجز"><span class="cart-icon">🛒</span><span class="cart-label">قائمة الشراء</span><span id="cart-badge" class="cart-badge">1</span></button><a class="nav-cta" href="#editions">Explore Lineup <span>↗</span></a></div></header>
 <main><section class="hero" id="home"><img class="hero-image" src="assets/hero.jpeg" alt="Graphite Antigravity OM1 SUV with bronze wheels outside a modern residence"><div class="hero-shade"></div><div class="hero-copy"><p class="eyebrow"><span></span> INTRODUCING ANTIGRAVITY OM1</p><h1>Antigravity<br>OM1<span>.</span></h1><p class="intro">Distinct by design. Exceptional by nature.<br>Three defined tiers of modern automotive luxury.</p><a class="button gold" href="#editions">Explore the 3 editions <span>↗</span></a></div><div class="hero-bottom"><span>DESIGNED TO STAND APART</span><a href="#editions">STARTING FROM 950,000 EGP <span>↓</span></a><span class="edition">01 / ANTIGRAVITY OM1</span></div></section>
 <section class="reveal-film" id="reveal" aria-labelledby="reveal-title"><div class="section-top"><div><p class="eyebrow">THE OM REVEAL</p><h2 id="reveal-title">A presence. <em>In motion.</em></h2></div><span class="pill">OM MOTORS / THE FILM</span></div><video controls playsinline preload="metadata" poster="assets/reveal-poster.jpg" aria-label="OM Motors reveal film"><source src="assets/om-reveal.mp4" type="video/mp4">Your browser cannot play this video. <a href="assets/om-reveal.mp4">Download the reveal film</a>.</video></section>
 <section class="statement"><p class="eyebrow">THE ART OF MOVING FORWARD</p><h2>Not just a journey.<br><span>A way of seeing the world.</span></h2><p>Confident lines. Considered details. An unmistakable silhouette.<br>Discover a new expression of modern motoring.</p></section>
-<section class="showcase" id="showcase"><div class="section-top"><div><p class="eyebrow">MAKE IT YOURS / اختر طرازك ولونك</p><h2>Every angle. <em>Entirely you.</em></h2></div><span class="pill"><i></i> DUAL MODEL SHOWROOM</span></div><div class="model-switcher-tabs" role="tablist" aria-label="Select Model"><button class="model-tab-btn active" data-model="om1" role="tab" aria-selected="true"><span class="tab-badge">SUV</span><span class="tab-title">ANTIGRAVITY OM1</span><span class="tab-desc">Concept SUV · 340 HP</span></button><button class="model-tab-btn" data-model="om2" role="tab" aria-selected="false"><span class="tab-badge">SEDAN</span><span class="tab-title">ANTIGRAVITY OM2</span><span class="tab-desc">Hyper Sedan · 850 HP</span></button></div><div class="model-view-panel active" id="panel-om1"><div class="viewer-wrap"><div class="watermark">OM1</div><div id="viewer" tabindex="0" role="region" aria-label="Interactive 3D concept SUV. Drag to rotate, arrow keys to change angle, plus and minus to zoom."></div><div class="viewer-label"><span>ANTIGRAVITY OM1</span><small>EXTERIOR / 3D SUV SHOWCASE</small></div><div class="view-tools"><button id="rotate" aria-pressed="true" aria-label="Pause automatic rotation">Ⅱ</button><button id="reset" aria-label="Reset camera view">↺</button><button id="expand" aria-label="Expand 3D showcase">⛶</button></div><div class="drag-hint">↔ <span>Drag to explore · Scroll to zoom</span></div><div id="fallback" hidden>3D is unavailable on this device. Explore the reference photography below.</div></div><div class="config"><div class="color-name"><span class="eyebrow">OM1 EXTERIOR FINISH / لون الطلاء الخارجي</span><p id="paint-name" aria-live="polite">Graphite Grey <small>01 / 05</small></p></div><div class="swatches" role="group" aria-label="Choose OM1 exterior color"><button class="swatch active" data-color="#45494a" data-name="Graphite Grey" style="--swatch:#45494a" aria-label="Graphite Grey" aria-pressed="true"></button><button class="swatch" data-color="#ddd8cc" data-name="Pearl White" style="--swatch:#ddd8cc" aria-label="Pearl White" aria-pressed="false"></button><button class="swatch" data-color="#151a19" data-name="Obsidian Black" style="--swatch:#151a19" aria-label="Obsidian Black" aria-pressed="false"></button><button class="swatch" data-color="#263f36" data-name="Forest Green" style="--swatch:#263f36" aria-label="Forest Green" aria-pressed="false"></button><button class="swatch" data-color="#8d6751" data-name="Copper Bronze" style="--swatch:#8d6751" aria-label="Copper Bronze" aria-pressed="false"></button></div><span class="finish">METALLIC FINISH <span>✦</span></span></div></div><div class="model-view-panel" id="panel-om2"><div class="viewer-wrap sedan-viewer-wrap"><div class="watermark">OM2</div><img id="sedan-paint-img" src="assets/sedan-paint-grey.jpg" alt="Antigravity OM2 Sedan Concept on rotating stage" class="sedan-stage-photo"><div class="viewer-label"><span>ANTIGRAVITY OM2</span><small>SEDAN CONCEPT · HYPER PERFORMANCE</small></div><div class="sedan-spec-badges"><div class="sedan-spec-badge"><strong>850</strong><span>HP</span></div><div class="sedan-spec-badge"><strong>2.9s</strong><span>0–100</span></div><div class="sedan-spec-badge"><strong>AWD</strong><span>DRIVE</span></div></div><div class="sedan-angles-bar" role="group" aria-label="Sedan Camera Angles"><button class="sedan-angle-btn active" data-img="assets/sedan-paint-grey.jpg" data-is-paint="true">Stage View</button><button class="sedan-angle-btn" data-img="assets/sedan-side.jpg">Side Profile</button><button class="sedan-angle-btn" data-img="assets/sedan-rear.jpg">Rear View</button><button class="sedan-angle-btn" data-img="assets/sedan-detail.jpg">Wheel Details</button></div></div><div class="config"><div class="color-name"><span class="eyebrow">OM2 EXTERIOR FINISH / لون طلاء السيدان</span><p id="sedan-paint-name" aria-live="polite">Matte Grey · رمادي مطفي <small>01 / 04</small></p></div><div class="sedan-swatches" role="group" aria-label="Choose OM2 exterior color"><button class="sedan-swatch active" data-img="assets/sedan-paint-grey.jpg" data-name="Matte Grey · رمادي مطفي" style="--swatch:#484c4f" aria-label="Matte Grey" aria-pressed="true"></button><button class="sedan-swatch" data-img="assets/sedan-paint-black.jpg" data-name="Obsidian Black · أسود ملكي" style="--swatch:#181a1c" aria-label="Obsidian Black" aria-pressed="false"></button><button class="sedan-swatch" data-img="assets/sedan-paint-white.jpg" data-name="Pearl White · أبيض لؤلؤي" style="--swatch:#e8e6df" aria-label="Pearl White" aria-pressed="false"></button><button class="sedan-swatch" data-img="assets/sedan-paint-gold.jpg" data-name="Copper Gold · نحاسي برونزي" style="--swatch:#a57d54" aria-label="Copper Gold" aria-pressed="false"></button></div><span class="finish">HYPER FINISH <span>✦</span></span></div></div></section>
-<section class="editions" id="editions" aria-labelledby="editions-title"><div class="section-top"><div><p class="eyebrow" id="editions-eyebrow">ANTIGRAVITY LINEUP / فئات وأسعار السيارات</p><h2 id="editions-title">Three expressions. <em>One exceptional standard.</em></h2></div><div class="editions-toggle-wrap"><button class="editions-model-btn active" data-model="om1">OM1 SUV (950K - 2M)</button><button class="editions-model-btn" data-model="om2">OM2 SEDAN (1.35M - 2.6M)</button></div></div><div class="editions-grid editions-panel active" id="editions-panel-om1"><div class="edition-card" data-trim="om1-gt"><div class="edition-badge-wrap"><span class="edition-tier">SUV ENTRY / الفئة الأولى</span><span class="edition-code">GT</span></div><h3 class="edition-name">Antigravity OM1 <b>GT</b></h3><p class="edition-tagline">Pure Performance · الأداء النقي والتصميم العصري</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">950,000</strong><span class="period">تبدأ من / Starting Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>1.5L Turbo · 185 HP</b></li><li><span>Drivetrain / الدفع</span><b>Front-Wheel Drive (FWD)</b></li><li><span>0–100 km/h / التسارع</span><b>7.9 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>7-Speed Dual-Clutch (DCT)</b></li><li><span>Wheels / الجنوط</span><b>18" Aero-Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Tech-Leather & Dual 10.25" Screens</b></li></ul><a href="#showcase" class="button outline edition-btn" data-model="om1" data-code="GT">Configure OM1 GT <span>↗</span></a></div><div class="edition-card featured" data-trim="om1-gtx"><div class="popular-ribbon">الأكثر طلباً · MOST POPULAR</div><div class="edition-badge-wrap"><span class="edition-tier">SPORT LUXURY / الفئة المتوسطة</span><span class="edition-code">GTX</span></div><h3 class="edition-name">Antigravity OM1 <b>GTX</b></h3><p class="edition-tagline">Power & Prestige · القوة والفخامة المتوازنة</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,480,000</strong><span class="period">السعر الرسمي / Official Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Twin-Scroll Turbo · 252 HP</b></li><li><span>Drivetrain / الدفع</span><b>Intelligent All-Wheel Drive (AWD)</b></li><li><span>0–100 km/h / التسارع</span><b>6.2 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>8-Speed Sport Shift Automatic</b></li><li><span>Wheels / الجنوط</span><b>19" Two-Tone Bronze Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Full Nappa Leather · Panoramic Roof</b></li></ul><a href="#showcase" class="button gold edition-btn" data-model="om1" data-code="GTX">Configure OM1 GTX <span>↗</span></a></div><div class="edition-card flagship" data-trim="om1-gtx-plus"><div class="flagship-ribbon">الإصدار الرائد · ULTIMATE FLAGSHIP</div><div class="edition-badge-wrap"><span class="edition-tier">FLAGSHIP HYBRID / الفئة الأعلى</span><span class="edition-code">GTX+</span></div><h3 class="edition-name">Antigravity OM1 <b>GTX+</b></h3><p class="edition-tagline">Ultimate Luxury & Apex Power · قمة الأداء والرفاهية المطلقة</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">2,000,000</strong><span class="period">قمة التجهيز / Top Specification</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Turbo Hybrid · 340 HP</b></li><li><span>Drivetrain / الدفع</span><b>Torque-Vectoring E-AWD</b></li><li><span>0–100 km/h / التسارع</span><b>4.8 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>Hybrid Dynamic Electronic Shift</b></li><li><span>Wheels / الجنوط</span><b>20" Signature Forged Bronze Turbine</b></li><li><span>Interior / المقصورة</span><b>Bespoke Ventilated Nappa & 14-Spk 3D Audio</b></li></ul><a href="#showcase" class="button outline edition-btn" data-model="om1" data-code="GTX+">Configure OM1 GTX+ <span>↗</span></a></div></div><div class="editions-grid editions-panel" id="editions-panel-om2"><div class="edition-card" data-trim="om2-gt"><div class="edition-badge-wrap"><span class="edition-tier">SEDAN GT / جراند تورر</span><span class="edition-code">GT</span></div><h3 class="edition-name">Antigravity OM2 <b>GT</b></h3><p class="edition-tagline">Pure Grand Touring · الأداء الرياضي المتوازن للسيدان</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,350,000</strong><span class="period">تبدأ من / Starting Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Turbo Hybrid · 320 HP</b></li><li><span>Drivetrain / الدفع</span><b>Rear-Wheel Drive (RWD)</b></li><li><span>0–100 km/h / التسارع</span><b>5.4 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>8-Speed Dual-Clutch Sport Shift</b></li><li><span>Wheels / الجنوط</span><b>19" Sport Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Tech-Leather & Curved OLED Cockpit</b></li></ul><a href="#showcase" class="button outline edition-btn" data-model="om2" data-code="GT">Configure OM2 GT <span>↗</span></a></div><div class="edition-card featured" data-trim="om2-gtx"><div class="popular-ribbon">الأكثر طلباً · MOST POPULAR</div><div class="edition-badge-wrap"><span class="edition-tier">PERFORMANCE AWD / أداء كلي متطور</span><span class="edition-code">GTX</span></div><h3 class="edition-name">Antigravity OM2 <b>GTX</b></h3><p class="edition-tagline">Twin-Turbo High Performance · تسارع وقوة فائقة للدفع الكلي</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,850,000</strong><span class="period">السعر الرسمي / Official Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>Twin-Turbo Hybrid · 550 HP</b></li><li><span>Drivetrain / الدفع</span><b>Intelligent Performance AWD</b></li><li><span>0–100 km/h / التسارع</span><b>3.8 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>9-Speed Sport Direct-Shift</b></li><li><span>Wheels / الجنوط</span><b>20" Bronze Turbine Alloys</b></li><li><span>Interior / المقصورة</span><b>Full Saddle Nappa Leather & 12-Spk Sound</b></li></ul><a href="#showcase" class="button gold edition-btn" data-model="om2" data-code="GTX">Configure OM2 GTX <span>↗</span></a></div><div class="edition-card flagship" data-trim="om2-gtx-plus"><div class="flagship-ribbon">الإصدار الخارق · 850 HP HYPER SEDAN</div><div class="edition-badge-wrap"><span class="edition-tier">APEX HYPER / قمة السرعة والهندسة</span><span class="edition-code">GTX+</span></div><h3 class="edition-name">Antigravity OM2 <b>GTX+</b></h3><p class="edition-tagline">Tri-Motor Apex Power · تسارع خارق 2.9 ثوانٍ وقوة 850 حصان</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">2,600,000</strong><span class="period">قمة التجهيز / Top Specification</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>Tri-Motor Hyper Hybrid · 850 HP</b></li><li><span>Drivetrain / الدفع</span><b>Torque-Vectoring Electric AWD</b></li><li><span>0–100 km/h / التسارع</span><b>2.9 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>Multi-Speed Hyper Transmission</b></li><li><span>Wheels / الجنوط</span><b>21" Forged Bronze Aeroblade Turbines</b></li><li><span>Interior / المقصورة</span><b>Ventilated Carbon Nappa & 3D Surround Audio</b></li></ul><a href="#showcase" class="button outline edition-btn" data-model="om2" data-code="GTX+">Configure OM2 GTX+ <span>↗</span></a></div></div></section>
+<section class="showcase" id="showcase"><div class="section-top"><div><p class="eyebrow">MAKE IT YOURS / اختر طرازك ولونك</p><h2>Every angle. <em>Entirely you.</em></h2></div><span class="pill"><i></i> DUAL MODEL SHOWROOM</span></div><div class="model-switcher-tabs" role="tablist" aria-label="Select Model"><button class="model-tab-btn active" data-model="om1" role="tab" aria-selected="true"><span class="tab-badge">SUV</span><span class="tab-title">ANTIGRAVITY OM1</span><span class="tab-desc">Concept SUV · 340 HP</span></button><button class="model-tab-btn" data-model="om2" role="tab" aria-selected="false"><span class="tab-badge">SEDAN</span><span class="tab-title">ANTIGRAVITY OM2</span><span class="tab-desc">Hyper Sedan · 850 HP</span></button></div><div class="model-view-panel active" id="panel-om1"><div class="viewer-wrap"><div class="watermark">OM1</div><div id="viewer" tabindex="0" role="region" aria-label="Interactive 3D concept SUV. Drag to rotate, arrow keys to change angle, plus and minus to zoom."></div><div class="viewer-label"><span>ANTIGRAVITY OM1</span><small>EXTERIOR / 3D SUV SHOWCASE</small></div><div class="view-tools"><button id="rotate" aria-pressed="true" aria-label="Pause automatic rotation">Ⅱ</button><button id="reset" aria-label="Reset camera view">↺</button><button id="expand" aria-label="Expand 3D showcase">⛶</button></div><div class="drag-hint">↔ <span>Drag to explore · Scroll to zoom</span></div><div id="fallback" hidden>3D is unavailable on this device. Explore the reference photography below.</div></div><div class="config"><div class="color-name"><span class="eyebrow">OM1 EXTERIOR FINISH / لون الطلاء الخارجي</span><p id="paint-name" aria-live="polite">Graphite Grey <small>01 / 05</small></p></div><div class="swatches" role="group" aria-label="Choose OM1 exterior color"><button class="swatch active" data-color="#45494a" data-name="Graphite Grey" style="--swatch:#45494a" aria-label="Graphite Grey" aria-pressed="true"></button><button class="swatch" data-color="#ddd8cc" data-name="Pearl White" style="--swatch:#ddd8cc" aria-label="Pearl White" aria-pressed="false"></button><button class="swatch" data-color="#151a19" data-name="Obsidian Black" style="--swatch:#151a19" aria-label="Obsidian Black" aria-pressed="false"></button><button class="swatch" data-color="#263f36" data-name="Forest Green" style="--swatch:#263f36" aria-label="Forest Green" aria-pressed="false"></button><button class="swatch" data-color="#8d6751" data-name="Copper Bronze" style="--swatch:#8d6751" aria-label="Copper Bronze" aria-pressed="false"></button></div><div class="config-actions"><button type="button" class="config-cart-btn" data-model="om1"><span>إضافة لقائمة الشراء</span> <b>🛒</b></button><span class="finish">METALLIC FINISH <span>✦</span></span></div></div></div><div class="model-view-panel" id="panel-om2"><div class="viewer-wrap sedan-viewer-wrap"><div class="watermark">OM2</div><img id="sedan-paint-img" src="assets/sedan-paint-grey.jpg" alt="Antigravity OM2 Sedan Concept on rotating stage" class="sedan-stage-photo"><div class="viewer-label"><span>ANTIGRAVITY OM2</span><small>SEDAN CONCEPT · HYPER PERFORMANCE</small></div><div class="sedan-spec-badges"><div class="sedan-spec-badge"><strong>850</strong><span>HP</span></div><div class="sedan-spec-badge"><strong>2.9s</strong><span>0–100</span></div><div class="sedan-spec-badge"><strong>AWD</strong><span>DRIVE</span></div></div><div class="sedan-angles-bar" role="group" aria-label="Sedan Camera Angles"><button class="sedan-angle-btn active" data-img="assets/sedan-paint-grey.jpg" data-is-paint="true">Stage View</button><button class="sedan-angle-btn" data-img="assets/sedan-side.jpg">Side Profile</button><button class="sedan-angle-btn" data-img="assets/sedan-rear.jpg">Rear View</button><button class="sedan-angle-btn" data-img="assets/sedan-detail.jpg">Wheel Details</button></div></div><div class="config"><div class="color-name"><span class="eyebrow">OM2 EXTERIOR FINISH / لون طلاء السيدان</span><p id="sedan-paint-name" aria-live="polite">Matte Grey · رمادي مطفي <small>01 / 04</small></p></div><div class="sedan-swatches" role="group" aria-label="Choose OM2 exterior color"><button class="sedan-swatch active" data-img="assets/sedan-paint-grey.jpg" data-name="Matte Grey · رمادي مطفي" style="--swatch:#484c4f" aria-label="Matte Grey" aria-pressed="true"></button><button class="sedan-swatch" data-img="assets/sedan-paint-black.jpg" data-name="Obsidian Black · أسود ملكي" style="--swatch:#181a1c" aria-label="Obsidian Black" aria-pressed="false"></button><button class="sedan-swatch" data-img="assets/sedan-paint-white.jpg" data-name="Pearl White · أبيض لؤلؤي" style="--swatch:#e8e6df" aria-label="Pearl White" aria-pressed="false"></button><button class="sedan-swatch" data-img="assets/sedan-paint-gold.jpg" data-name="Copper Gold · نحاسي برونزي" style="--swatch:#a57d54" aria-label="Copper Gold" aria-pressed="false"></button></div><div class="config-actions"><button type="button" class="config-cart-btn" data-model="om2"><span>إضافة لقائمة الشراء</span> <b>🛒</b></button><span class="finish">HYPER FINISH <span>✦</span></span></div></div></div></section>
+<section class="editions" id="editions" aria-labelledby="editions-title"><div class="section-top"><div><p class="eyebrow" id="editions-eyebrow">ANTIGRAVITY LINEUP / فئات وأسعار السيارات</p><h2 id="editions-title">Three expressions. <em>One exceptional standard.</em></h2></div><div class="editions-toggle-wrap"><button class="editions-model-btn active" data-model="om1">OM1 SUV (950K - 2M)</button><button class="editions-model-btn" data-model="om2">OM2 SEDAN (1.35M - 2.6M)</button></div></div><div class="editions-grid editions-panel active" id="editions-panel-om1"><div class="edition-card" data-trim="om1-gt"><div class="edition-badge-wrap"><span class="edition-tier">SUV ENTRY / الفئة الأولى</span><span class="edition-code">GT</span></div><h3 class="edition-name">Antigravity OM1 <b>GT</b></h3><p class="edition-tagline">Pure Performance · الأداء النقي والتصميم العصري</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">950,000</strong><span class="period">تبدأ من / Starting Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>1.5L Turbo · 185 HP</b></li><li><span>Drivetrain / الدفع</span><b>Front-Wheel Drive (FWD)</b></li><li><span>0–100 km/h / التسارع</span><b>7.9 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>7-Speed Dual-Clutch (DCT)</b></li><li><span>Wheels / الجنوط</span><b>18" Aero-Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Tech-Leather & Dual 10.25" Screens</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om1" data-code="GT">Configure OM1 GT <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om1" data-code="GT" data-price="950000" aria-label="احجز OM1 GT">احجز الفئة 🛒</button></div></div><div class="edition-card featured" data-trim="om1-gtx"><div class="popular-ribbon">الأكثر طلباً · MOST POPULAR</div><div class="edition-badge-wrap"><span class="edition-tier">SPORT LUXURY / الفئة المتوسطة</span><span class="edition-code">GTX</span></div><h3 class="edition-name">Antigravity OM1 <b>GTX</b></h3><p class="edition-tagline">Power & Prestige · القوة والفخامة المتوازنة</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,480,000</strong><span class="period">السعر الرسمي / Official Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Twin-Scroll Turbo · 252 HP</b></li><li><span>Drivetrain / الدفع</span><b>Intelligent All-Wheel Drive (AWD)</b></li><li><span>0–100 km/h / التسارع</span><b>6.2 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>8-Speed Sport Shift Automatic</b></li><li><span>Wheels / الجنوط</span><b>19" Two-Tone Bronze Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Full Nappa Leather · Panoramic Roof</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om1" data-code="GTX">Configure OM1 GTX <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om1" data-code="GTX" data-price="1480000" aria-label="احجز OM1 GTX">احجز الفئة 🛒</button></div></div><div class="edition-card flagship" data-trim="om1-gtx-plus"><div class="flagship-ribbon">الإصدار الرائد · ULTIMATE FLAGSHIP</div><div class="edition-badge-wrap"><span class="edition-tier">FLAGSHIP HYBRID / الفئة الأعلى</span><span class="edition-code">GTX+</span></div><h3 class="edition-name">Antigravity OM1 <b>GTX+</b></h3><p class="edition-tagline">Ultimate Luxury & Apex Power · قمة الأداء والرفاهية المطلقة</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">2,000,000</strong><span class="period">قمة التجهيز / Top Specification</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Turbo Hybrid · 340 HP</b></li><li><span>Drivetrain / الدفع</span><b>Torque-Vectoring E-AWD</b></li><li><span>0–100 km/h / التسارع</span><b>4.8 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>Hybrid Dynamic Electronic Shift</b></li><li><span>Wheels / الجنوط</span><b>20" Signature Forged Bronze Turbine</b></li><li><span>Interior / المقصورة</span><b>Bespoke Ventilated Nappa & 14-Spk 3D Audio</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om1" data-code="GTX+">Configure OM1 GTX+ <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om1" data-code="GTX+" data-price="2000000" aria-label="احجز OM1 GTX+">احجز الفئة 🛒</button></div></div></div><div class="editions-grid editions-panel" id="editions-panel-om2"><div class="edition-card" data-trim="om2-gt"><div class="edition-badge-wrap"><span class="edition-tier">SEDAN GT / جراند تورر</span><span class="edition-code">GT</span></div><h3 class="edition-name">Antigravity OM2 <b>GT</b></h3><p class="edition-tagline">Pure Grand Touring · الأداء الرياضي المتوازن للسيدان</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,350,000</strong><span class="period">تبدأ من / Starting Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>2.0L Turbo Hybrid · 320 HP</b></li><li><span>Drivetrain / الدفع</span><b>Rear-Wheel Drive (RWD)</b></li><li><span>0–100 km/h / التسارع</span><b>5.4 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>8-Speed Dual-Clutch Sport Shift</b></li><li><span>Wheels / الجنوط</span><b>19" Sport Alloy Wheels</b></li><li><span>Interior / المقصورة</span><b>Tech-Leather & Curved OLED Cockpit</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om2" data-code="GT">Configure OM2 GT <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om2" data-code="GT" data-price="1350000" aria-label="احجز OM2 GT">احجز الفئة 🛒</button></div></div><div class="edition-card featured" data-trim="om2-gtx"><div class="popular-ribbon">الأكثر طلباً · MOST POPULAR</div><div class="edition-badge-wrap"><span class="edition-tier">PERFORMANCE AWD / أداء كلي متطور</span><span class="edition-code">GTX</span></div><h3 class="edition-name">Antigravity OM2 <b>GTX</b></h3><p class="edition-tagline">Twin-Turbo High Performance · تسارع وقوة فائقة للدفع الكلي</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">1,850,000</strong><span class="period">السعر الرسمي / Official Price</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>Twin-Turbo Hybrid · 550 HP</b></li><li><span>Drivetrain / الدفع</span><b>Intelligent Performance AWD</b></li><li><span>0–100 km/h / التسارع</span><b>3.8 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>9-Speed Sport Direct-Shift</b></li><li><span>Wheels / الجنوط</span><b>20" Bronze Turbine Alloys</b></li><li><span>Interior / المقصورة</span><b>Full Saddle Nappa Leather & 12-Spk Sound</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om2" data-code="GTX">Configure OM2 GTX <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om2" data-code="GTX" data-price="1850000" aria-label="احجز OM2 GTX">احجز الفئة 🛒</button></div></div><div class="edition-card flagship" data-trim="om2-gtx-plus"><div class="flagship-ribbon">الإصدار الخارق · 850 HP HYPER SEDAN</div><div class="edition-badge-wrap"><span class="edition-tier">APEX HYPER / قمة السرعة والهندسة</span><span class="edition-code">GTX+</span></div><h3 class="edition-name">Antigravity OM2 <b>GTX+</b></h3><p class="edition-tagline">Tri-Motor Apex Power · تسارع خارق 2.9 ثوانٍ وقوة 850 حصان</p><div class="edition-price"><span class="currency">EGP</span><strong class="amount">2,600,000</strong><span class="period">قمة التجهيز / Top Specification</span></div><ul class="edition-specs"><li><span>Engine / المحرك</span><b>Tri-Motor Hyper Hybrid · 850 HP</b></li><li><span>Drivetrain / الدفع</span><b>Torque-Vectoring Electric AWD</b></li><li><span>0–100 km/h / التسارع</span><b>2.9 Seconds</b></li><li><span>Transmission / ناقل الحركة</span><b>Multi-Speed Hyper Transmission</b></li><li><span>Wheels / الجنوط</span><b>21" Forged Bronze Aeroblade Turbines</b></li><li><span>Interior / المقصورة</span><b>Ventilated Carbon Nappa & 3D Surround Audio</b></li></ul><div class="edition-actions"><a href="#showcase" class="button outline edition-btn" data-model="om2" data-code="GTX+">Configure OM2 GTX+ <span>↗</span></a><button type="button" class="button gold edition-reserve-btn" data-model="om2" data-code="GTX+" data-price="2600000" aria-label="احجز OM2 GTX+">احجز الفئة 🛒</button></div></div></div></section>
 <section class="design" id="design"><div class="design-photo"><img src="assets/hero.jpeg" alt="Sculpted OM front grille, signature lights and bronze wheels" loading="lazy"><span>01 — SCULPTED WITH INTENT</span></div><div class="design-copy"><p class="eyebrow">FORM. FEELING. FORWARD.</p><h2>Presence in<br>every detail<span>.</span></h2><p>From the signature bronze accents to the sweeping shoulder line, every element belongs to one unmistakable vision.</p><div class="detail"><span>01</span><div><h3>A signature of its own</h3><p>A bold grille and light signature define the first impression.</p></div></div><div class="detail"><span>02</span><div><h3>Elegance in motion</h3><p>Sculpted surfaces bring a sense of movement to every angle.</p></div></div><a class="text-link" href="#showcase">See it from every side <span>↗</span></a></div></section>
 <section class="experience" id="experience"><div class="interior-model-block active" id="interior-block-om1"><div class="interior"><img id="interior-image-om1" src="assets/interior-camel.jpg" alt="Antigravity OM1 SUV bespoke interior cabin" loading="lazy"></div><div class="experience-overlay"></div><div class="experience-copy"><p class="eyebrow">YOUR SPACE. REIMAGINED. <span>·</span> مقصورة OM1 SUV</p><h2>Outside the ordinary.<br>Inside your world.</h2><p>A sanctuary of hand-finished leather, bronze accents, and tailored ergonomics.</p><div class="leather-config"><div class="color-name"><span class="eyebrow">OM1 LEATHER / تنجيد جلد OM1 الفاخر</span><p id="leather-name-om1" aria-live="polite">Desert Camel · تان الصحراء <small>01 / 06</small></p></div><div class="leather-swatches" role="group" aria-label="Choose OM1 leather color"><button class="leather-swatch active" data-img="assets/interior-camel.jpg" data-name="Desert Camel · تان الصحراء" style="--swatch:#b87b4f" aria-label="Desert Camel" aria-pressed="true"></button><button class="leather-swatch" data-img="assets/interior-crimson.jpg" data-name="Crimson Red · أحمر رياضي" style="--swatch:#a82329" aria-label="Crimson Red" aria-pressed="false"></button><button class="leather-swatch" data-img="assets/interior-cognac.jpg" data-name="Cognac Brown · بني كونياك" style="--swatch:#8c4722" aria-label="Cognac Brown" aria-pressed="false"></button><button class="leather-swatch" data-img="assets/interior-ivory.jpg" data-name="Ivory Cream · عاجي لؤلؤي" style="--swatch:#ded8cc" aria-label="Ivory Cream" aria-pressed="false"></button><button class="leather-swatch" data-img="assets/interior-black.jpg" data-name="Obsidian Black · أسود ملكي" style="--swatch:#242526" aria-label="Obsidian Black" aria-pressed="false"></button><button class="leather-swatch" data-img="assets/interior-navy.jpg" data-name="Imperial Navy · أزرق كحلي" style="--swatch:#233a5e" aria-label="Imperial Navy" aria-pressed="false"></button></div></div><div class="experience-actions"><a href="#showcase" class="button outline">Explore exterior <span>↗</span></a><button type="button" class="button outline cabin-view-btn" data-target="#interior-block-om1" aria-label="Toggle clear cabin view">Clear cabin view <span>👁</span></button></div></div></div><div class="interior-model-block" id="interior-block-om2"><div class="interior"><img id="interior-image-om2" src="assets/sedan-leather-cognac.jpg" alt="Antigravity OM2 Sedan bespoke interior cabin" loading="lazy"></div><div class="experience-overlay"></div><div class="experience-copy"><p class="eyebrow">THE SEDAN COCKPIT <span>·</span> مقصورة OM2 السيدان الفاخرة</p><h2>Curved horizons.<br>Crafted precision.</h2><p>A pilot-focused cockpit featuring sweeping panoramic displays, wrap-around saddle leather, and ambient gold illumination.</p><div class="leather-config"><div class="color-name"><span class="eyebrow">OM2 LEATHER / تنجيد جلد السيدان</span><p id="leather-name-om2" aria-live="polite">Saddle Cognac · بني كونياك كلاسيكي <small>01 / 04</small></p></div><div class="sedan-leather-swatches" role="group" aria-label="Choose OM2 leather color"><button class="sedan-leather-swatch active" data-img="assets/sedan-leather-cognac.jpg" data-name="Saddle Cognac · بني كونياك" style="--swatch:#855234" aria-label="Saddle Cognac" aria-pressed="true"></button><button class="sedan-leather-swatch" data-img="assets/sedan-leather-crimson.jpg" data-name="Crimson Bordeaux · أحمر رياضي" style="--swatch:#a82329" aria-label="Crimson Bordeaux" aria-pressed="false"></button><button class="sedan-leather-swatch" data-img="assets/sedan-leather-ivory.jpg" data-name="Ivory Cream · عاجي لؤلؤي" style="--swatch:#ded8cc" aria-label="Ivory Cream" aria-pressed="false"></button><button class="sedan-leather-swatch" data-img="assets/sedan-leather-black.jpg" data-name="Obsidian Black · أسود ملكي" style="--swatch:#242526" aria-label="Obsidian Black" aria-pressed="false"></button></div></div><div class="experience-actions"><a href="#showcase" class="button outline">Explore exterior <span>↗</span></a><button type="button" class="button outline cabin-view-btn" data-target="#interior-block-om2" aria-label="Toggle clear cabin view">Clear cabin view <span>👁</span></button></div></div></div></section>
 <section class="closing"><p class="eyebrow">THIS IS ONLY THE BEGINNING</p><h2>Your next chapter.<br><em>In your color.</em></h2><a class="button gold" href="#showcase">Create your signature <span>↗</span></a></section></main>
+<!-- Purchase List Backdrop & Sliding Drawer -->
+<div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+<aside id="purchase-drawer" class="purchase-drawer" aria-labelledby="drawer-title" aria-hidden="true" role="dialog">
+  <div class="drawer-header">
+    <div class="drawer-header-info">
+      <span class="drawer-eyebrow">ORDER & SPECIFICATION · قائمة الشراء والحجز</span>
+      <h2 id="drawer-title">سيارتك المخصصة <em>OM</em></h2>
+    </div>
+    <button type="button" id="close-drawer-btn" class="drawer-close-btn" aria-label="إغلاق قائمة الشراء">✕</button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- Active Selected Vehicle Summary Card -->
+    <div class="drawer-card vehicle-summary-card">
+      <div class="vehicle-media">
+        <img id="drawer-car-img" src="assets/hero.jpeg" alt="Selected OM Vehicle Preview">
+        <span id="drawer-model-pill" class="vehicle-model-pill">OM1 SUV</span>
+      </div>
+      <div class="vehicle-info">
+        <div class="vehicle-heading">
+          <h3 id="drawer-car-title">Antigravity OM1 <b>GT</b></h3>
+          <span id="drawer-car-tier" class="vehicle-tier-label">SUV Entry · الفئة الأولى</span>
+        </div>
+        <div class="drawer-trim-selector" role="group" aria-label="اختر الفئة">
+          <button type="button" class="trim-pill active" data-trim-code="GT">GT</button>
+          <button type="button" class="trim-pill" data-trim-code="GTX">GTX</button>
+          <button type="button" class="trim-pill" data-trim-code="GTX+">GTX+</button>
+        </div>
+        <div class="vehicle-price-row">
+          <span class="price-label">السعر الأساسي للفئة:</span>
+          <strong id="drawer-base-price">950,000</strong> <span class="curr">EGP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Configurations (Paint & Leather) -->
+    <div class="drawer-card config-summary-card">
+      <h4 class="card-subtitle">المواصفات والخيارات المختارة</h4>
+      <div class="config-summary-items">
+        <div class="config-item">
+          <div class="config-item-visual">
+            <span id="drawer-paint-swatch" class="spec-swatch" style="background:#45494a"></span>
+          </div>
+          <div class="config-item-meta">
+            <span class="spec-label">الطلاء الخارجي (Exterior Paint)</span>
+            <strong id="drawer-paint-name">Graphite Grey</strong>
+          </div>
+          <span class="spec-included">مشمول ✦</span>
+        </div>
+        <div class="config-item">
+          <div class="config-item-visual">
+            <span id="drawer-leather-swatch" class="spec-swatch" style="background:#b87b4f"></span>
+          </div>
+          <div class="config-item-meta">
+            <span class="spec-label">تنجيد المقصورة (Interior Leather)</span>
+            <strong id="drawer-leather-name">Desert Camel</strong>
+          </div>
+          <span class="spec-included">مشمول ✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Luxury Packages / Add-ons -->
+    <div class="drawer-card addons-card">
+      <div class="addons-heading">
+        <h4 class="card-subtitle">باقات وتجهيزات اختيارية</h4>
+        <span class="addons-hint">اختر لإضافتها إلى قائمة الشراء</span>
+      </div>
+      <div class="addons-list">
+        <label class="addon-option">
+          <input type="checkbox" class="addon-checkbox" data-addon-id="care" data-price="45000">
+          <span class="addon-custom-check"></span>
+          <div class="addon-info">
+            <span class="addon-title">باقة الصيانة الشاملة OM Care+</span>
+            <span class="addon-desc">صيانة دورية وقطع غيار أصلية لمدة 5 سنوات أو 100,000 كم</span>
+          </div>
+          <strong class="addon-price">+45,000 <small>EGP</small></strong>
+        </label>
+        <label class="addon-option">
+          <input type="checkbox" class="addon-checkbox" data-addon-id="wallbox" data-price="35000">
+          <span class="addon-custom-check"></span>
+          <div class="addon-info">
+            <span class="addon-title">شاحن منزلي فائق السرعة Wallbox 22kW</span>
+            <span class="addon-desc">شاحن ذكي فائق السرعة مع التوصيل والتركيب المنزلي المعتمد</span>
+          </div>
+          <strong class="addon-price">+35,000 <small>EGP</small></strong>
+        </label>
+        <label class="addon-option">
+          <input type="checkbox" class="addon-checkbox" data-addon-id="ppf" data-price="28000">
+          <span class="addon-custom-check"></span>
+          <div class="addon-info">
+            <span class="addon-title">حماية نانو سيراميك كاملة Ultra-Shield PPF</span>
+            <span class="addon-desc">طبقة حماية ذاتية المعالجة ضد الخدوش والعوامل الجوية للطلاء</span>
+          </div>
+          <strong class="addon-price">+28,000 <small>EGP</small></strong>
+        </label>
+        <label class="addon-option">
+          <input type="checkbox" class="addon-checkbox" data-addon-id="starlight" data-price="22000">
+          <span class="addon-custom-check"></span>
+          <div class="addon-info">
+            <span class="addon-title">سقف بانورامي بألياف ضوئية Starlight Roof</span>
+            <span class="addon-desc">إضاءة محيطية ساحرة بنجوم تفاعلية وأوضاع قيادة ليلية</span>
+          </div>
+          <strong class="addon-price">+22,000 <small>EGP</small></strong>
+        </label>
+      </div>
+    </div>
+
+    <!-- Financial Calculation Breakdown -->
+    <div class="drawer-card pricing-breakdown-card">
+      <h4 class="card-subtitle">تفاصيل التكلفة الإجمالية</h4>
+      <div class="breakdown-rows">
+        <div class="breakdown-row">
+          <span>سعر الفئة الأساسي (Base Price)</span>
+          <b id="summary-base-price">950,000 EGP</b>
+        </div>
+        <div class="breakdown-row">
+          <span>إجمالي الباقات الإضافية (Add-ons)</span>
+          <b id="summary-addons-price">0 EGP</b>
+        </div>
+        <div class="breakdown-row total-row">
+          <span>السعر الإجمالي التقديري للسيارة</span>
+          <strong id="summary-total-price">950,000 <small>EGP</small></strong>
+        </div>
+        <div class="deposit-notice">
+          <div class="deposit-icon">🔒</div>
+          <div class="deposit-text">
+            <strong>جدية الحجز المستردة: 50,000 EGP</strong>
+            <span>مبلغ مسترد بالكامل في حال الرغبة بتعديل أو إلغاء الطلب قبل التخصيص النهائي للمصنع.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservation Booking Form -->
+    <form id="reservation-form" class="drawer-card reservation-form">
+      <h4 class="card-subtitle">بيانات حجز السيارة</h4>
+      <p class="form-instruction">أدخل بياناتك لتأكيد إدراج طلبك في قائمة تسليمات OM الأولى لعام 2026:</p>
+      
+      <div class="form-group">
+        <label for="client-name">الاسم بالكامل *</label>
+        <input type="text" id="client-name" name="name" required placeholder="مثال: عمر الشريف" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label for="client-phone">رقم الهاتف / واتساب *</label>
+        <input type="tel" id="client-phone" name="phone" required placeholder="010XXXXXXXX" autocomplete="tel">
+      </div>
+
+      <div class="form-group">
+        <label for="client-showroom">صالة الاستلام والتسليم المفضلة</label>
+        <select id="client-showroom" name="showroom">
+          <option value="الشيخ زايد">صالة OM Motors — الشيخ زايد (الرئيسية)</option>
+          <option value="التجمع الخامس">صالة OM Motors — التجمع الخامس (القاهرة الجديدة)</option>
+          <option value="الإسكندرية">صالة OM Motors — كورنيش الإسكندرية</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="client-payment">نظام السداد المفضل</label>
+        <select id="client-payment" name="payment">
+          <option value="دفع نقدي كاش">دفع نقدي كاش (خصم استلام 2%)</option>
+          <option value="تقسيط مباشر OM">تقسيط مباشر عبر OM Financial (فائدة 0% للسنة الأولى)</option>
+          <option value="تمويل بنكي">تمويل عبر البنوك الشريكة (فترات سداد حتى 7 سنوات)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="button gold submit-order-btn">
+        <span>تأكيد طلب الشراء وجدية الحجز</span>
+        <span class="btn-arrow">↗</span>
+      </button>
+    </form>
+  </div>
+</aside>
+
+<!-- Instant Order Confirmation Modal -->
+<div id="order-modal-backdrop" class="order-modal-backdrop" aria-hidden="true"></div>
+<div id="order-confirm-modal" class="order-confirm-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-ref-title">
+  <div class="modal-content">
+    <div class="modal-badge-check">✓</div>
+    <span class="modal-eyebrow">RESERVATION CONFIRMED · تم تسجيل طلبك بنجاح</span>
+    <h3 id="modal-ref-title">رقم مرجع الحجز: <span id="modal-ref-code">OM-2026-8812</span></h3>
+    <p class="modal-greeting">شكراً لك، <strong id="modal-client-name">العميل</strong>. تم تسجيل طلبك في قائمة أولويات تسليم OM Motors لعام 2026 وسيتم التواصل معك من مستشار المبيعات خلال 24 ساعة.</p>
+
+    <div class="modal-summary-box">
+      <div class="summary-line">
+        <span>طراز السيارة والفئة:</span>
+        <b id="modal-summary-car">Antigravity OM1 GT</b>
+      </div>
+      <div class="summary-line">
+        <span>الطلاء الخارجي:</span>
+        <b id="modal-summary-paint">Graphite Grey</b>
+      </div>
+      <div class="summary-line">
+        <span>الجلد الداخلي:</span>
+        <b id="modal-summary-leather">Desert Camel</b>
+      </div>
+      <div class="summary-line">
+        <span>الباقات الإضافية:</span>
+        <b id="modal-summary-addons">لا توجد باقات إضافية</b>
+      </div>
+      <div class="summary-line modal-total-line">
+        <span>السعر الإجمالي:</span>
+        <strong id="modal-summary-total">950,000 EGP</strong>
+      </div>
+      <div class="summary-line modal-deposit-line">
+        <span>دفعة تأكيد الحجز المستردة:</span>
+        <b>50,000 EGP</b>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <a id="modal-whatsapp-btn" class="button whatsapp-btn" target="_blank" rel="noopener">
+        <span>إرسال تفاصيل الحجز عبر واتساب</span>
+        <span class="wa-icon">💬</span>
+      </a>
+      <button type="button" id="modal-print-btn" class="button outline">
+        <span>طباعة أو حفظ مواصفات الحجز</span>
+        <span>🖨</span>
+      </button>
+      <button type="button" id="modal-close-btn" class="button text-btn">إغلاق النافذة</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Quick Cart Button -->
+<button type="button" id="floating-cart-btn" class="floating-cart-btn" aria-label="عرض قائمة الشراء">
+  <span class="floating-cart-icon">🛒</span>
+  <div class="floating-cart-info">
+    <span class="floating-cart-title">قائمة الشراء</span>
+    <span id="floating-cart-sub" class="floating-cart-sub">OM1 GT · 950K</span>
+  </div>
+  <span class="floating-cart-badge">1</span>
+</button>
+
 <footer><a class="brand" href="#home"><span class="emblem">O</span><span>OM <b>MOTORS</b></span></a><p>Moving with a different perspective.</p><button id="install-app" class="install-app" hidden>Install OM Motors ↗</button><span>© <span id="year">2026</span> OM Motors · Concept design · By Omar Sherif</span><a href="#home">BACK TO TOP ↑</a></footer><script src="pwa.js" defer></script><script type="module" src="app.js"></script></body></html>
