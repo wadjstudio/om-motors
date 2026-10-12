@@ -1,4 +1,4 @@
-const CACHE = 'om-motors-v6';
+const CACHE = 'om-motors-v7';
 const base = new URL('./', self.location.href);
 const files = ['index.html','style.css','app.js','pwa.js','model-loader.js','manifest.webmanifest','favicon.ico','assets/hero.jpeg','assets/details.jpeg','assets/interior-camel.jpg','assets/interior-crimson.jpg','assets/interior-cognac.jpg','assets/interior-ivory.jpg','assets/interior-black.jpg','assets/interior-navy.jpg','assets/sedan-stage.jpg','assets/sedan-rear.jpg','assets/sedan-side.jpg','assets/sedan-detail.jpg','assets/sedan-paint-grey.jpg','assets/sedan-paint-white.jpg','assets/sedan-paint-black.jpg','assets/sedan-paint-gold.jpg','assets/sedan-leather-cognac.jpg','assets/sedan-leather-crimson.jpg','assets/sedan-leather-ivory.jpg','assets/sedan-leather-black.jpg','assets/reveal-poster.jpg','assets/three.module.js','assets/GLTFLoader.js','assets/BufferGeometryUtils.js','assets/om-generated.glb','assets/icons/favicon.svg','assets/icons/icon-180.png','assets/icons/icon-192.png','assets/icons/icon-512.png','assets/icons/icon-maskable-512.png'];
 const urls = files.map(file => new URL(file, base).href);

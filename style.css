@@ -145,12 +145,175 @@
 .floating-cart-sub{display:block;font-size:9px;color:var(--gold);letter-spacing:.8px}
 .floating-cart-badge{background:var(--gold);color:#121411;font-size:10px;font-weight:800;border-radius:50%;width:18px;height:18px;display:grid;place-items:center}
 
-@media(max-width:768px){
-  .header-actions{gap:10px}
-  .cart-trigger-btn{padding:8px 12px;font-size:10px}
-  .purchase-drawer{max-width:100%}
-  .drawer-body{padding:20px 20px 35px}
-  .floating-cart-btn{bottom:15px;right:15px;padding:8px 14px}
-  .modal-content{padding:28px 20px 24px}
+/* ========================================================
+   RESPONSIVE DESIGN ACROSS DESKTOP, LAPTOP & MOBILE
+   ======================================================== */
+
+/* Laptops & Standard Monitors (1024px - 1366px) */
+@media (max-width: 1366px) {
+  header { height: 80px; padding: 0 4%; }
+  nav { gap: 24px; font-size: 11px; }
+  .nav-cta { padding: 10px 0; font-size: 11px; }
+  .cart-trigger-btn { padding: 8px 14px; font-size: 10.5px; }
+  .hero { height: 750px; min-height: 640px; }
+  .hero-copy { top: 22%; left: 5%; }
+  .showcase { margin: 0 4% 90px; }
+  .viewer-wrap, .sedan-viewer-wrap { height: 480px; }
+  .editions { margin: 0 4% 100px; }
+  .editions-grid { gap: 18px; }
+  .edition-card { padding: 32px 24px 28px; }
 }
+
+/* Tablets & Small Laptops (768px - 1023px) */
+@media (max-width: 1023px) {
+  header { height: 74px; padding: 0 4%; }
+  nav { gap: 16px; font-size: 11px; }
+  .nav-cta { display: none; }
+  .brand { font-size: 18px; gap: 10px; }
+  .emblem { height: 38px; width: 38px; font-size: 32px; }
+  .hero { height: 700px; }
+  .hero-copy { top: 20%; left: 5%; max-width: 480px; }
+  h1 { font-size: clamp(48px, 8vw, 76px); }
+  .editions-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .design { grid-template-columns: 1fr; gap: 40px; margin: 0 5% 80px; }
+  .design-photo { height: 400px; }
+  .experience { height: 560px; }
+  .experience-copy { padding: 60px 5%; max-width: 520px; }
+  .purchase-drawer { max-width: 460px; }
+}
+
+/* Mobile Devices & Small Tablets (< 768px) */
+@media (max-width: 767px) {
+  header { height: 68px; padding: 0 4%; }
+  nav { display: none; }
+  .nav-cta { display: none; }
+  .brand { font-size: 16px; gap: 8px; }
+  .brand b { font-size: 7.5px; }
+  .emblem { height: 34px; width: 34px; font-size: 28px; }
+  .cart-trigger-btn { padding: 7px 12px; font-size: 10px; border-radius: 20px; }
+  .cart-trigger-btn .cart-label { display: inline-block; }
+
+  /* Hero */
+  .hero { height: 100svh; min-height: 580px; max-height: 750px; }
+  .hero-image { object-position: 60% center; }
+  .hero-copy { top: 16%; left: 5%; right: 5%; max-width: 100%; }
+  h1 { font-size: clamp(38px, 11vw, 54px); letter-spacing: -1.5px; }
+  .intro { font-size: 12.5px; line-height: 1.7; margin: 18px 0 24px; }
+  .hero-bottom { bottom: 20px; left: 5%; right: 5%; font-size: 7.5px; }
+  .hero-bottom span.edition { display: none; }
+
+  /* Model Switcher */
+  .model-switcher-tabs { flex-direction: row; gap: 8px; }
+  .model-tab-btn { padding: 12px 14px; }
+  .tab-title { font-size: 13px; }
+  .tab-desc { font-size: 8.5px; }
+
+  /* 3D Showcase & Stage */
+  .showcase { margin: 0 4% 60px; }
+  .section-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+  .section-top h2 { font-size: 26px; letter-spacing: -1px; }
+  .viewer-wrap, .sedan-viewer-wrap { height: 360px; }
+  .watermark { font-size: 140px; top: 12%; }
+  .viewer-label { top: 16px; left: 16px; font-size: 9px; }
+  .viewer-label small { font-size: 6px; }
+  .view-tools { top: 16px; right: 16px; gap: 6px; }
+  .view-tools button { width: 32px; height: 32px; }
+  .drag-hint { bottom: 14px; font-size: 14px; }
+  .drag-hint span { font-size: 8.5px; }
+
+  /* Sedan badges and angles */
+  .sedan-spec-badges { top: 14px; right: 14px; gap: 6px; }
+  .sedan-spec-badge { padding: 4px 8px; }
+  .sedan-spec-badge strong { font-size: 13px; }
+  .sedan-spec-badge span { font-size: 6.5px; }
+  .sedan-angles-bar {
+    width: 90%;
+    max-width: 340px;
+    bottom: 12px;
+    padding: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    justify-content: flex-start;
+  }
+  .sedan-angles-bar::-webkit-scrollbar { display: none; }
+  .sedan-angle-btn { padding: 5px 9px; font-size: 8.5px; flex-shrink: 0; }
+
+  /* Config Bars */
+  .config { padding: 18px 16px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .color-name p { font-size: 13px; min-width: 0; }
+  .swatches, .sedan-swatches { gap: 12px; flex-wrap: wrap; }
+  .swatch, .sedan-swatch { width: 28px; height: 28px; }
+  .config-actions { width: 100%; justify-content: space-between; align-items: center; }
+  .config-cart-btn { padding: 8px 14px; font-size: 10px; }
+
+  /* Editions Grid */
+  .editions { margin: 0 4% 70px; }
+  .editions-toggle-wrap { width: 100%; display: flex; gap: 8px; }
+  .editions-model-btn { flex: 1; padding: 10px 8px; text-align: center; font-size: 9px; }
+  .editions-grid { grid-template-columns: 1fr; gap: 24px; }
+  .edition-card { padding: 30px 20px 24px; }
+  .edition-price .amount { font-size: 30px; }
+  .edition-specs li { font-size: 10px; }
+  .edition-actions { flex-direction: column; gap: 8px; }
+  .edition-actions .edition-btn, .edition-actions .edition-reserve-btn { width: 100%; padding: 14px 10px; font-size: 11px; }
+
+  /* Design & Interior */
+  .design-photo { height: 320px; }
+  .design h2 { font-size: 34px; }
+  .experience { height: auto; min-height: 560px; padding: 40px 0; }
+  .experience-copy { padding: 30px 5%; max-width: 100%; }
+  .experience h2 { font-size: 30px; line-height: 1.25; }
+  .leather-config { padding: 14px 14px; }
+  .leather-swatches, .sedan-leather-swatches { gap: 10px; flex-wrap: wrap; }
+  .leather-swatch, .sedan-leather-swatch { width: 26px; height: 26px; }
+  .experience-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+  .experience-actions .button { width: 100%; text-align: center; justify-content: center; }
+
+  /* Drawer on Mobile */
+  .purchase-drawer { width: 100%; max-width: 100%; border-left: 0; }
+  .drawer-header { padding: 18px 20px; }
+  .drawer-header-info h2 { font-size: 18px; }
+  .drawer-body { padding: 16px 18px max(40px, env(safe-area-inset-bottom)); }
+  .drawer-card { padding: 16px; margin-bottom: 16px; }
+  .vehicle-media { height: 130px; }
+  .vehicle-heading h3 { font-size: 17px; }
+  #drawer-base-price { font-size: 20px; }
+  .form-group input, .form-group select { font-size: 16px !important; }
+  .total-row strong { font-size: 22px; }
+
+  /* Floating Cart on Mobile */
+  .floating-cart-btn {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    right: 14px;
+    padding: 8px 14px;
+    gap: 10px;
+    border-radius: 30px;
+  }
+  .floating-cart-title { font-size: 10px; }
+  .floating-cart-sub { font-size: 8px; }
+  .floating-cart-badge { width: 16px; height: 16px; font-size: 9px; }
+
+  /* Modal on Mobile */
+  .order-confirm-modal { width: 94%; max-width: 100%; border-radius: 8px; }
+  .modal-content { padding: 28px 16px 22px; }
+  .modal-badge-check { width: 46px; height: 46px; font-size: 22px; margin-bottom: 14px; }
+  #modal-ref-title { font-size: 17px; }
+  .modal-greeting { font-size: 11px; margin-bottom: 18px; }
+  .modal-summary-box { padding: 12px 14px; }
+  .summary-line { font-size: 10px; }
+}
+
+/* Extra small screens (iPhone SE, Galaxy A, < 375px) */
+@media (max-width: 374px) {
+  .brand { font-size: 14px; }
+  .cart-trigger-btn .cart-label { display: none; }
+  .cart-trigger-btn { padding: 6px 10px; }
+  .model-switcher-tabs { flex-direction: column; }
+  .tab-title { font-size: 12px; }
+  h1 { font-size: 34px; }
+  .edition-price .amount { font-size: 26px; }
+}
+
 
